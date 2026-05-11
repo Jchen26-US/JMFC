@@ -26,7 +26,7 @@ module signext
     //
     // ---------------- MODULE DESIGN IMPLEMENTATION ----------------
     //
-    assign Y = { {n{A[(i-1)]}}, A}; // sign extend (i-1)th bit i bits to the left.
+    assign Y = { {(n-i){A[i-1]}}, A };
 endmodule
 
 `endif // SIGNEXT
