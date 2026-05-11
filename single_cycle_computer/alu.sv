@@ -29,12 +29,9 @@ module alu
     //
     // ---------------- MODULE DESIGN IMPLEMENTATION ----------------
     //
-    logic [(n-1):0] condinvb, sum;
     logic [(2*n-1):0] HiLo;
 
-    assign zero = (result == {n{1'b0}}); // zero result control signal
-    assign condinvb = alucontrol[2] ? ~b : b;
-    assign sumSlt = a + condinvb + alucontrol[2]; // (a-b using 2s complement) test if a == b, if b<a, then sumSlt will have neg bit[31]
+    assign zero = (result == {n{1'b0}}); // zero result control signal 
 
     // initialize the internal HiLo register used in multiplying two 32-bit numbers = a 64-bit number.
     initial
@@ -50,18 +47,12 @@ module alu
             4'b0011: result = ~(a | b);          // nor
             4'b0100: result = HiLo[(n-1):0];     // MFLO
             4'b0101: result = HiLo[(2*n-1):n];   // MFHI
-            4'b0110: result = sumSlt;            // sub
+            4'b0110: result = a + (~b) + 1;            // sub 2's complement (a+b)
             4'b0111: begin                       // slt
                                 if (a[31] != b[31])
-                                        if (a[31] > b[31])
-                                                result = 1;
-                                        else
-                                                result = 0;
+                                    result = a[31] ? 1 : 0;
                                 else
-                                        if (a < b)
-                                                result = 1;
-                                        else
-                                                result = 0;
+                                    result = (a < b) ? 1 : 0;
             end
             default: result = {n{1'bx}};         // default for mult/div combinational output
         endcase
