@@ -1,6 +1,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 // The Cooper Union
-// ECE 251 Spring 2023
+// ECE 251 Spring 2026
+// Engineer: Jayden Chen
 //
 //     Module Name: tb_alu
 //     Description: Testbench for 32-bit RISC-based CPU ALU (MIPS)
