@@ -1,5 +1,7 @@
 # iverilog outputs
 simv
+#rust folder
+target/
 
 # MAC
 .DS_Store
