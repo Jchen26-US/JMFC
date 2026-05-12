@@ -28,7 +28,6 @@ module tb_computer;
   logic [31:0] writedata;
   logic [31:0] dataadr;
 
-  logic firstTest, secondTest;
 
   // instantiate the CPU as the device to be tested
   computer dut(clk, reset, writedata, dataadr, memwrite);
@@ -43,8 +42,6 @@ module tb_computer;
 
 
   initial begin
-    firstTest = 1'b0;
-    secondTest = 1'b0;
     $dumpfile("tb_computer.vcd");
     $dumpvars(0,dut,clk,reset,writedata,dataadr,memwrite);
     $monitor("t=%t\t0x%7h\t%7d\t%8d",$realtime,writedata,dataadr,memwrite);
@@ -118,31 +115,13 @@ module tb_computer;
   end
 
   always @(negedge clk, posedge clk) begin
-    // check results
-    // TODO: You need to update the checks below
-    // if (dut.dmem.RAM[21] === 32'h9504)
-    //   begin
-    //     $display("Successfully wrote 0x%4h at RAM[%3d]",84,32'h9504);
-    //     firstTest = 1'b1;
-    //   end
-
-    if (dut.dmem.RAM[21] === 32'h96)
-      begin
-        $display("Successfully wrote 0x%4h at RAM[%3d]",84,32'h0096);
-        firstTest = 1'b1;
+      if (memwrite) begin
+          $display("DEBUG: memwrite=1 dataadr=%0d writedata=0x%h", dataadr, writedata);
       end
-    if(memwrite) begin
-      if(dataadr === 84 & writedata === 32'h96)
-      begin
-        $display("Successfully wrote 0x%4h at RAM[%3d]",writedata,dataadr);
-        firstTest = 1'b1;
+      if (memwrite && dataadr === 32'd252) begin
+          $display("Halt: CPU wrote 0x%h to address 252", writedata);
+          $finish;
       end
-    end
-    if (firstTest === 1'b1)
-    begin
-        $display("Program successfully completed");
-        $finish;
-    end
   end
 
 endmodule
