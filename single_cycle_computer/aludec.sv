@@ -44,6 +44,9 @@ module aludec
                 6'b011010: alucontrol <= 4'b1001; // div
                 6'b010010: alucontrol <= 4'b0100; // mflo
                 6'b010000: alucontrol <= 4'b0101; // mfhi
+                6'b100110: alucontrol <= 4'b1010; //xor
+                6'b000000: alucontrol <= 4'b1011; //sll
+                6'b000010: alucontrol <= 4'b1100; //srl
                 default:   alucontrol <= 4'bxxxx; // ???
             endcase
         endcase

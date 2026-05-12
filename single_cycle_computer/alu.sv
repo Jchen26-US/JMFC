@@ -54,6 +54,9 @@ module alu
                                 else
                                     result = (a < b) ? 1 : 0;
             end
+            4'b1010: result = a^b; //xor
+            4'b1011: result = a << b[4:0]; //sll
+            4'b1100: result = a >> b[4:0]; //srl
             default: result = {n{1'bx}};         // default for mult/div combinational output
         endcase
     end
