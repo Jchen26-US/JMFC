@@ -44,7 +44,7 @@ module tb_controller;
     task check_ctrl;
         input [6:0]   expected_sigs; // regwrite, regdst, alusrc, branch/pcsrc, memwrite, memtoreg, jump
         input [3:0]   expected_alu;
-        input [511:0] test_name; // 32 char limit 
+        input [511:0] test_name;
         
         logic [6:0] actual_sigs;
         begin

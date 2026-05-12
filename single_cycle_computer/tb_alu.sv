@@ -4,7 +4,7 @@
 // Engineer: Jayden Chen
 //
 //     Module Name: tb_alu
-//     Description: Testbench for 32-bit RISC-based CPU ALU (MIPS)
+//     Description: Testbench for 32-bit CPU ALU (MIPS)
 //
 // Tests:
 //   Combinational: AND, OR, ADD, NOR, SUB, SLT, MFLO, MFHI
