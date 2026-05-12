@@ -90,6 +90,10 @@ module tb_aludec;
         funct = 6'b010010; check_ctrl(4'b0100, "R-Type: MFLO (010010)");
         funct = 6'b010000; check_ctrl(4'b0101, "R-Type: MFHI (010000)");
         funct = 6'b111111; check_ctrl(4'bxxxx, "R-Type: undefined funct");
+        funct = 6'b100110; check_ctrl(4'b1010, "R-Type: XOR  (100110)");
+        funct = 6'b000000; check_ctrl(4'b1011, "R-Type: SLL  (000000)");
+        funct = 6'b000010; check_ctrl(4'b1100, "R-Type: SRL  (000010)");
+
 
         // aluop = 11: default branch in the case statement — should also
         // route through the funct lookup the same way aluop=10 does
@@ -102,6 +106,9 @@ module tb_aludec;
         funct = 6'b101010; check_ctrl(4'b0111, "default aluop: SLT  (101010)");
         funct = 6'b011000; check_ctrl(4'b1000, "default aluop: MULT (011000)");
         funct = 6'b111111; check_ctrl(4'bxxxx, "default aluop: undefined funct");
+        funct = 6'b100110; check_ctrl(4'b1010, "default aluop: XOR  (100110)");
+        funct = 6'b000000; check_ctrl(4'b1011, "default aluop: SLL  (000000)");
+        funct = 6'b000010; check_ctrl(4'b1100, "default aluop: SRL  (000010)");
 
         $display("\n=== RESULTS: %0d passed, %0d failed ===\n", pass_count, fail_count);
 

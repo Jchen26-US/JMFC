@@ -223,6 +223,48 @@ module tb_alu;
         a = 32'd0; b = 32'd0;
         check_result(32'd0, 1, 1, "ZERO: OR 0|0");
 
+        $display("--- XOR ---");
+        alucontrol = 4'b1010;
+        
+        a = 32'hFFFF_FFFF; b = 32'hFFFF_FFFF;
+        check_result(32'h0000_0000, 1, 1, "XOR: all-ones ^ all-ones = 0");
+        
+        a = 32'hA5A5_A5A5; b = 32'h5A5A_5A5A;
+        check_result(32'hFFFF_FFFF, 1, 0, "XOR: checkerboard complement = all-ones");
+        
+        a = 32'hDEAD_BEEF; b = 32'h0000_0000;
+        check_result(32'hDEAD_BEEF, 1, 0, "XOR: identity (x^0=x)");
+        
+        $display("--- SLL ---");
+        alucontrol = 4'b1011;
+        
+        a = 32'h0000_0001; b = 32'd4;
+        check_result(32'h0000_0010, 1, 0, "SLL: 1 << 4 = 16");
+        
+        a = 32'h0000_0001; b = 32'd31;
+        check_result(32'h8000_0000, 1, 0, "SLL: 1 << 31 = 0x80000000");
+        
+        a = 32'hFFFF_FFFF; b = 32'd1;
+        check_result(32'hFFFF_FFFE, 1, 0, "SLL: 0xFFFFFFFF << 1");
+        
+        a = 32'h0000_0001; b = 32'd0;
+        check_result(32'h0000_0001, 1, 0, "SLL: shift by 0 = no change");
+        
+        $display("--- SRL ---");
+        alucontrol = 4'b1100;
+        
+        a = 32'h0000_0010; b = 32'd4;
+        check_result(32'h0000_0001, 1, 0, "SRL: 16 >> 4 = 1");
+        
+        a = 32'h8000_0000; b = 32'd31;
+        check_result(32'h0000_0001, 1, 0, "SRL: 0x80000000 >> 31 = 1");
+        
+        a = 32'hFFFF_FFFF; b = 32'd1;
+        check_result(32'h7FFF_FFFF, 1, 0, "SRL: logical shift, MSB filled with 0");
+        
+        a = 32'h0000_0010; b = 32'd0;
+        check_result(32'h0000_0010, 1, 0, "SRL: shift by 0 = no change");
+
         $display("\n=== RESULTS: %0d passed, %0d failed ===\n", pass_count, fail_count);
 
         if (fail_count == 0)
