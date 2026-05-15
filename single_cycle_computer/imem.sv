@@ -32,7 +32,7 @@ module imem
     initial
     begin
       // read memory in hex format from file 
-      $readmemh("../programs/NestedProg_exe",RAM);
+      $readmemh("../programs/RecursiveProg_exe",RAM);
     end
 
   assign readdata = RAM[addr]; // word aligned

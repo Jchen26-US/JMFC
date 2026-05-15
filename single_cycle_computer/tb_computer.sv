@@ -53,7 +53,7 @@ module tb_computer;
   // initialize test
   initial begin
     #0 clk_enable <= 0; #50 reset <= 1; # 50; reset <= 0; #50 clk_enable <= 1;
-    #2500 $finish;
+    #10000 $finish;
   end
 
   // monitor what happens at posedge of clock transition
