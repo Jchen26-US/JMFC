@@ -1,9 +1,8 @@
 //////////////////////////////////////////////////////////////////////////////////
 // The Cooper Union
-// ECE 251 Spring 2023
-// Engineer: Prof Rob Marano
-// 
-//     Create Date: 2023-02-07
+// ECE 251 Spring 2026
+// Engineer: Jayden Chen and Matthew Jeong
+//
 //     Module Name: sl2
 //     Description: shift left by 2 (multiply by 4)
 //

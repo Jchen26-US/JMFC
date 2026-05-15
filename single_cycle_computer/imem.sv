@@ -1,9 +1,8 @@
 //////////////////////////////////////////////////////////////////////////////////
 // The Cooper Union
-// ECE 251 Spring 2023
-// Engineer: Prof Rob Marano
-// 
-//     Create Date: 2023-02-07
+// ECE 251 Spring 2026
+// Engineer: Jayden Chen and Matthew Jeong
+//
 //     Module Name: imem
 //     Description: 32-bit RISC memory (instruction "text" segment)
 //
