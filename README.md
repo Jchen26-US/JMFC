@@ -131,7 +131,7 @@ The ALU is driven by a 4-bit `alucontrol` signal. Multiply and divide are clocke
 
 ## Assembler
 
-The assembler is written in Rust and lives in the `assembler/` directory. It is a two-pass assembler:
+The assembler is written in Rust and lives in the `tools/mips_32_assembler/` subdirectory. It is a two-pass assembler:
 
 - **Pass 1** — scans the source to assign addresses to all labels
 - **Pass 2** — encodes every instruction to its 32-bit machine code representation, resolving label references for branches and jumps
