@@ -1,5 +1,4 @@
 #[derive(Debug, Clone, PartialEq)]
-
 pub enum Token {
     Identifier(String),
     Label(String),
