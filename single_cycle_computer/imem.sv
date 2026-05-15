@@ -32,7 +32,7 @@ module imem
     initial
     begin
       // read memory in hex format from file 
-      $readmemh("../programs/LeafProg_exe",RAM);
+      $readmemh("../programs/NestedProg_exe",RAM);
     end
 
   assign readdata = RAM[addr]; // word aligned

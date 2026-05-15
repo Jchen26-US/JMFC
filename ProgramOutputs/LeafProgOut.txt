@@ -1,0 +1,178 @@
+vvp -M .  computer.vvp -lxt2
+WARNING: ./imem.sv:35: $readmemh(../programs/LeafProg_exe): Not enough words in the file for the requested range [0:63].
+LXT2 info: dumpfile tb_computer.vcd opened for output.
+-
+        -instr = 0xxxxxxxxx
+        -op = 0bxxxxxx
+        -controls = 0bxxxxxxxxx
+        -funct = 0bxxxxxx
+        -aluop = 0bxx
+        -alucontrol = 0bxxxx
+        -alu result = 0xxxxxxxxx
+        -HiLo = 0x0000000000000000
+        -$v0 = 0xxxxxxxxx
+        -$v1 = 0xxxxxxxxx
+        -$a0 = 0xxxxxxxxx
+        -$a1 = 0xxxxxxxxx
+        -$t0 = 0xxxxxxxxx
+        -$t1 = 0xxxxxxxxx
+        -regfile -- ra1 =  x
+        -regfile -- ra2 =  x
+        -regfile -- we3 = x
+        -regfile -- wa3 =  x
+        -regfile -- wd3 =          x
+        -regfile -- rd1 =          x
+        -regfile -- rd2 =          x
+        +RAM[   x] =    x
+writedata       dataadr memwrite
+t=                   0  0xxxxxxxxx            x        x
+t=                 500  0xxxxxxxxx            5        0
++
+        +instr = 0x20080005
+        +op = 0b001000
+        +controls = 0b101000000
+        +funct = 0b000101
+        +aluop = 0b00
+        +alucontrol = 0b0010
+        +alu result = 0x00000005
+        +HiLo = 0x0000000000000000
+        +$v0 = 0xxxxxxxxx
+        +$v1 = 0xxxxxxxxx
+        +$a0 = 0xxxxxxxxx
+        +$a1 = 0xxxxxxxxx
+        +$t0 = 0xxxxxxxxx
+        +$t1 = 0xxxxxxxxx
+        +regfile -- ra1 =  0
+        +regfile -- ra2 =  8
+        +regfile -- we3 = 1
+        +regfile -- wa3 =  8
+        +regfile -- wd3 =          5
+        +regfile -- rd1 =          0
+        +regfile -- rd2 =          x
+        +RAM[   5] =    x
+writedata       dataadr memwrite
+t=                1550  0xxxxxxxxx            7        0
+-
+        -instr = 0x20090007
+        -op = 0b001000
+        -controls = 0b101000000
+        -funct = 0b000111
+        -aluop = 0b00
+        -alucontrol = 0b0010
+        -alu result = 0x00000007
+        -HiLo = 0x0000000000000000
+        -$v0 = 0xxxxxxxxx
+        -$v1 = 0xxxxxxxxx
+        -$a0 = 0xxxxxxxxx
+        -$a1 = 0xxxxxxxxx
+        -$t0 = 0x00000005
+        -$t1 = 0xxxxxxxxx
+        -regfile -- ra1 =  0
+        -regfile -- ra2 =  9
+        -regfile -- we3 = 1
+        -regfile -- wa3 =  9
+        -regfile -- wd3 =          7
+        -regfile -- rd1 =          0
+        -regfile -- rd2 =          x
+        +RAM[   7] =    x
+writedata       dataadr memwrite
++
+        +instr = 0x20090007
+        +op = 0b001000
+        +controls = 0b101000000
+        +funct = 0b000111
+        +aluop = 0b00
+        +alucontrol = 0b0010
+        +alu result = 0x00000007
+        +HiLo = 0x0000000000000000
+        +$v0 = 0xxxxxxxxx
+        +$v1 = 0xxxxxxxxx
+        +$a0 = 0xxxxxxxxx
+        +$a1 = 0xxxxxxxxx
+        +$t0 = 0x00000005
+        +$t1 = 0xxxxxxxxx
+        +regfile -- ra1 =  0
+        +regfile -- ra2 =  9
+        +regfile -- we3 = 1
+        +regfile -- wa3 =  9
+        +regfile -- wd3 =          7
+        +regfile -- rd1 =          0
+        +regfile -- rd2 =          x
+        +RAM[   7] =    x
+writedata       dataadr memwrite
+t=                1650  0x00000007           12        0
+-
+        -instr = 0x01091020
+        -op = 0b000000
+        -controls = 0b110000010
+        -funct = 0b100000
+        -aluop = 0b10
+        -alucontrol = 0b0010
+        -alu result = 0x0000000c
+        -HiLo = 0x0000000000000000
+        -$v0 = 0xxxxxxxxx
+        -$v1 = 0xxxxxxxxx
+        -$a0 = 0xxxxxxxxx
+        -$a1 = 0xxxxxxxxx
+        -$t0 = 0x00000005
+        -$t1 = 0x00000007
+        -regfile -- ra1 =  8
+        -regfile -- ra2 =  9
+        -regfile -- we3 = 1
+        -regfile -- wa3 =  2
+        -regfile -- wd3 =         12
+        -regfile -- rd1 =          5
+        -regfile -- rd2 =          7
+        +RAM[  12] =    x
+writedata       dataadr memwrite
++
+        +instr = 0x01091020
+        +op = 0b000000
+        +controls = 0b110000010
+        +funct = 0b100000
+        +aluop = 0b10
+        +alucontrol = 0b0010
+        +alu result = 0x0000000c
+        +HiLo = 0x0000000000000000
+        +$v0 = 0xxxxxxxxx
+        +$v1 = 0xxxxxxxxx
+        +$a0 = 0xxxxxxxxx
+        +$a1 = 0xxxxxxxxx
+        +$t0 = 0x00000005
+        +$t1 = 0x00000007
+        +regfile -- ra1 =  8
+        +regfile -- ra2 =  9
+        +regfile -- we3 = 1
+        +regfile -- wa3 =  2
+        +regfile -- wd3 =         12
+        +regfile -- rd1 =          5
+        +regfile -- rd2 =          7
+        +RAM[  12] =    x
+writedata       dataadr memwrite
+t=                1750  0x0000000c          252        1
+-
+        -instr = 0xac0200fc
+        -op = 0b101011
+        -controls = 0b001010000
+        -funct = 0b111100
+        -aluop = 0b00
+        -alucontrol = 0b0010
+        -alu result = 0x000000fc
+        -HiLo = 0x0000000000000000
+        -$v0 = 0x0000000c
+        -$v1 = 0xxxxxxxxx
+        -$a0 = 0xxxxxxxxx
+        -$t0 = 0x00000005
+        -$t1 = 0x00000007
+        -regfile -- ra1 =  0
+        -regfile -- ra2 =  2
+        -regfile -- we3 = 0
+        -regfile -- wa3 =  2
+        -regfile -- wd3 =        252
+        -regfile -- rd1 =          0
+        -regfile -- rd2 =         12
+        +RAM[ 252] =    x
+writedata       dataadr memwrite
+DEBUG: memwrite=1 dataadr=252 writedata=0x0000000c
+Halt: CPU wrote 0x0000000c to address 252
+tb_computer.sv:123: $finish called at 1800 (100ps)
