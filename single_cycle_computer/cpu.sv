@@ -1,13 +1,11 @@
 //////////////////////////////////////////////////////////////////////////////////
 // The Cooper Union
-// ECE 251 Spring 2023
-// Engineer: Prof Rob Marano
+// ECE 251 Spring 2026
+// Engineer: Jayden Chen and Matthew Jeong
 // 
-//     Create Date: 2023-02-07
 //     Module Name: cpu
 //     Description: 32-bit RISC-based CPU (MIPS)
 //
-// Revision: 1.0
 //
 //////////////////////////////////////////////////////////////////////////////////
 `ifndef CPU

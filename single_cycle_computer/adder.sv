@@ -1,13 +1,11 @@
 //////////////////////////////////////////////////////////////////////////////////
 // The Cooper Union
-// ECE 251 Spring 2023
-// Engineer: Prof Rob Marano
+// ECE 251 Spring 2026
+// Engineer: Jayden Chen, Matthew Jeong
 // 
-//     Create Date: 2023-02-07
 //     Module Name: adder
 //     Description: simple behavorial adder
 //
-// Revision: 1.0
 //
 //////////////////////////////////////////////////////////////////////////////////
 `ifndef ADDER
