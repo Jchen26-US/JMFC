@@ -8,6 +8,8 @@ This project implements a 32-bit single-cycle MIPS CPU in SystemVerilog, paired 
 
 ## CPU Design
 
+![alt text](assets/photo1.png)
+
 The CPU is a single-cycle implementation where every instruction completes in one clock cycle. The datapath connects an instruction memory, register file, ALU, and data memory, all coordinated by a central control unit split into a main decoder (`maindec.sv`) and an ALU decoder (`aludec.sv`). Multiply and divide results are computed on the falling clock edge and stored in a dedicated 64-bit `HiLo` register, with `mfhi` and `mflo` reading the upper and lower halves respectively.
 
 ## Supported Instructions
