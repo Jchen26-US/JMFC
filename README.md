@@ -8,6 +8,8 @@ This project implements a 32-bit single-cycle MIPS CPU in SystemVerilog, paired 
 
 ## CPU Design
 
+![alt text](assets/photo1.png)
+
 The CPU is a single-cycle implementation where every instruction completes in one clock cycle. The datapath connects an instruction memory, register file, ALU, and data memory, all coordinated by a central control unit split into a main decoder (`maindec.sv`) and an ALU decoder (`aludec.sv`). Multiply and divide results are computed on the falling clock edge and stored in a dedicated 64-bit `HiLo` register, with `mfhi` and `mflo` reading the upper and lower halves respectively.
 
 ## Supported Instructions
@@ -131,12 +133,12 @@ The ALU is driven by a 4-bit `alucontrol` signal. Multiply and divide are clocke
 
 ## Assembler
 
-The assembler is written in Rust and lives in the `assembler/` directory. It is a two-pass assembler:
+The assembler is written in Rust and lives in the `tools/mips_32_assembler/` subdirectory. It is a two-pass assembler:
 
 - **Pass 1** — scans the source to assign addresses to all labels
 - **Pass 2** — encodes every instruction to its 32-bit machine code representation, resolving label references for branches and jumps
 
-Running the assembler:
+Running the assembler within the subdirectory:
 
 ```bash
 cargo run -- input.asm output_name
