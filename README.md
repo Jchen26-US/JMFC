@@ -138,7 +138,11 @@ The assembler is written in Rust and lives in the `tools/mips_32_assembler/` sub
 - **Pass 1** — scans the source to assign addresses to all labels
 - **Pass 2** — encodes every instruction to its 32-bit machine code representation, resolving label references for branches and jumps
 
-Running the assembler within the subdirectory:
+To run the assembler within the subdirectory, first install rustc:
+
+```bash
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+```
 
 ```bash
 cargo run -- input.asm output_name
