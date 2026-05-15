@@ -3,9 +3,9 @@ use std::fs;
 use std::io::{self, BufWriter, Write};
 use std::process;
 
-use mips_32_assembler::elf::write_elf;
 use mips_32_assembler::emitter::Emitter;
 use mips_32_assembler::lexer::Lexer;
+use mips_32_assembler::memfile::{write_data_mem, write_text_mem};
 use mips_32_assembler::parser::Parser;
 
 fn prompt(label: &str) -> String {
@@ -30,10 +30,10 @@ fn main() {
         process::exit(1);
     });
 
-    let output_path = if args.len() > 2 {
+    let output_name = if args.len() > 2 {
         args[2].clone()
     } else {
-        prompt("Output file: ")
+        prompt("Output name (without extension): ")
     };
 
     let tokens = Lexer::new(&source).tokenize();
@@ -45,35 +45,39 @@ fn main() {
         process::exit(1);
     }
 
-    let entry = emitter
-        .symbols()
-        .get("main")
-        .copied()
-        .unwrap_or(0x0040_0000);
-
-    let out_file = fs::File::create(&output_path).unwrap_or_else(|e| {
-        eprintln!("error: cannot create '{}': {}", output_path, e);
+    let text_path = format!("{}.mem", output_name);
+    let text_file = fs::File::create(&text_path).unwrap_or_else(|e| {
+        eprintln!("error: cannot create '{}': {}", text_path, e);
         process::exit(1);
     });
-
-    let mut writer = BufWriter::new(out_file);
-
-    if let Err(e) = write_elf(&mut writer, emitter.text_segment(), emitter.data_segment(), entry) {
-        eprintln!("error writing ELF: {}", e);
+    let mut text_writer = BufWriter::new(text_file);
+    if let Err(e) = write_text_mem(&mut text_writer, emitter.text_segment()) {
+        eprintln!("error writing text mem: {}", e);
         process::exit(1);
     }
 
-    let text_words = emitter.text_segment().len();
-    let data_bytes = emitter.data_segment().len();
+    if !emitter.data_segment().is_empty() {
+        let data_path = format!("{}_data.mem", output_name);
+        let data_file = fs::File::create(&data_path).unwrap_or_else(|e| {
+            eprintln!("error: cannot create '{}': {}", data_path, e);
+            process::exit(1);
+        });
+        let mut data_writer = BufWriter::new(data_file);
+        if let Err(e) = write_data_mem(&mut data_writer, emitter.data_segment()) {
+            eprintln!("error writing data mem: {}", e);
+            process::exit(1);
+        }
+        println!("wrote '{}'  and  '{}_data.mem'", text_path, output_name);
+    } else {
+        println!("wrote '{}'", text_path);
+    }
 
     println!(
-        "assembled '{}' -> '{}'  ({} instruction{}, {} data byte{})",
-        input_path,
-        output_path,
-        text_words,
-        if text_words == 1 { "" } else { "s" },
-        data_bytes,
-        if data_bytes == 1 { "" } else { "s" },
+        "{} instruction{}, {} data byte{}",
+        emitter.text_segment().len(),
+        if emitter.text_segment().len() == 1 { "" } else { "s" },
+        emitter.data_segment().len(),
+        if emitter.data_segment().len() == 1 { "" } else { "s" },
     );
 
     if !emitter.symbols().is_empty() {
